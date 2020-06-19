@@ -4,3 +4,17 @@ build
 devel
 
 profile.tmp
+
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+
+.idea/
+
+### Python template
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*$py.class
