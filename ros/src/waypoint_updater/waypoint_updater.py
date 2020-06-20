@@ -43,7 +43,8 @@ class WaypointUpdater(object):
         self.pose = None
         self.base_waypoints = None
 
-        rospy.spin()
+        # rospy.spin()
+        self.loop()
 
     def loop(self):
         rate = rospy.Rate(50)
