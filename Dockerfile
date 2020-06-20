@@ -17,8 +17,16 @@ RUN apt-get upgrade -y
 
 # install python packages
 RUN apt-get install -y python-pip
+RUN pip install --upgrade pip
+RUN pip install --upgrade setuptools
+
+#RUN apt-get install -y python-pip
+#COPY requirements.txt ./requirements.txt
+#RUN git clone https://github.com/udacity/CarND-Capstone.git
+#WORKDIR /CarND-Capstone
 COPY requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt
+RUN rm requirements.txt
 
 # install required ros dependencies
 RUN apt-get install -y ros-$ROS_DISTRO-cv-bridge
@@ -31,4 +39,6 @@ RUN apt-get install -y netbase
 RUN mkdir /capstone
 VOLUME ["/capstone"]
 VOLUME ["/root/.ros/log/"]
+WORKDIR /capstone
+COPY . .
 WORKDIR /capstone/ros
