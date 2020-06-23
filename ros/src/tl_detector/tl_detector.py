@@ -4,15 +4,13 @@ from std_msgs.msg import Int32
 from geometry_msgs.msg import PoseStamped, Pose
 from styx_msgs.msg import TrafficLightArray, TrafficLight
 from styx_msgs.msg import Lane
-from scipy.spatial import KDTree
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 from light_classification.tl_classifier import TLClassifier
 import tf
 import cv2
 import yaml
-import math
-
+from scipy.spatial import KDTree
 
 STATE_COUNT_THRESHOLD = 3
 
@@ -23,8 +21,6 @@ class TLDetector(object):
 
         self.pose = None
         self.waypoints = None
-        #self.waypoint_tree = None
-        #self.waypoints_2d = None
         self.camera_image = None
         self.lights = []
         self.waypoints_2d = None
@@ -69,7 +65,6 @@ class TLDetector(object):
             self.waypoints_2d = [[waypoint.pose.pose.position.x, waypoint.pose.pose.position.y] for waypoint in waypoints.waypoints]
             self.waypoint_tree = KDTree(self.waypoints_2d)
 
-
     def traffic_cb(self, msg):
         self.lights = msg.lights
 
@@ -91,7 +86,6 @@ class TLDetector(object):
         of times till we start using it. Otherwise the previous stable state is
         used.
         '''
-        rospy.loginfo("TL Detector Ineternal light_wp: %f ... state: %f", light_wp, state)
         if self.state != state:
             self.state_count = 0
             self.state = state
@@ -99,11 +93,9 @@ class TLDetector(object):
             self.last_state = self.state
             light_wp = light_wp if state == TrafficLight.RED else -1
             self.last_wp = light_wp
-            rospy.loginfo("TL Detector Published light_wp: %f ... state: %f", light_wp, state)
             self.upcoming_red_light_pub.publish(Int32(light_wp))
         else:
-            rospy.loginfo("TL Detector Published light_wp: %f", self.last_wp)
-            #self.upcoming_red_light_pub.publish(Int32(self.last_wp))
+            self.upcoming_red_light_pub.publish(Int32(self.last_wp))
         self.state_count += 1
 
     def get_closest_waypoint(self, x, y):
@@ -134,7 +126,6 @@ class TLDetector(object):
             int: ID of traffic light color (specified in styx_msgs/TrafficLight)
 
         """
-
         # For testing we are retuning the light state
         return light.state
         # if (not self.has_image):
@@ -146,7 +137,6 @@ class TLDetector(object):
         # # Get classification
         # return self.light_classifier.get_classification(cv_image)
 
-
     def process_traffic_lights(self):
         """Finds closest visible traffic light, if one exists, and determines its
             location and color
@@ -156,7 +146,6 @@ class TLDetector(object):
             int: ID of traffic light color (specified in styx_msgs/TrafficLight)
 
         """
-
         closest_light = None
         line_wp_idex = None
 
@@ -179,7 +168,6 @@ class TLDetector(object):
         if closest_light:
             state = self.get_light_state(closest_light)
             return line_wp_idex, state
-
         return -1, TrafficLight.UNKNOWN
 
 if __name__ == '__main__':
