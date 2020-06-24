@@ -112,13 +112,14 @@ class WaypointUpdater(object):
             p = Waypoint()
             p.pose = wp.pose
 
-            stop_idx = max(self.stopline_wp_idx - closest_idx - 3, 0) #Two waypoinyts back from the line so front of the car stops at line.
+            stop_idx = max(self.stopline_wp_idx - closest_idx , 0) #Two waypoinyts back from the line so front of the car stops at line.
             dist = self.distance(waypoints, i, stop_idx)
-            vel = math.sqrt(2 * MAX_DECEL * dist)
+            max_vel = wp.twist.twist.linear.x
+            vel = max_vel*(1/(1+math.exp(-0.15*(dist-20))))#math.sqrt(2 * MAX_DECEL * dist)
             if vel < 1.:
                 vel = 0.
 
-            p.twist.twist.linear.x = min(vel, wp.twist.twist.linear.x)
+            p.twist.twist.linear.x = min(vel, max_vel)
             temp.append(p)
         return temp
 
