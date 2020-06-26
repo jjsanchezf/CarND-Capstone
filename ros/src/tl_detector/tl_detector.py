@@ -139,9 +139,11 @@ class TLDetector(object):
             car_position = self.get_closest_waypoint(self.pose.pose)
 
         #TODO find the closest visible traffic light (if one exists)
-
+        
+        state = self.get_light_state(light)
+        
         if light:
-            state = self.get_light_state(light)
+            #state = self.get_light_state(light)
             return light_wp, state
         self.waypoints = None
         return -1, TrafficLight.UNKNOWN
