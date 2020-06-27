@@ -5,7 +5,7 @@ This is the project repo for the final project of the Udacity Self-Driving Car N
 | Name             | Email                          | 
 |:-----------------|:------------------------------:|
 | Subir Das        | subir.das1@gmail.com           |
-| Job Vakayil Jose | jvjctk@gmial.com               |
+| Job Vakayil Jose | jvjctk@gmail.com               |
 | Jorge Sanchez    | jorge.sanchezfuentes@gmail.com |
 | Marius Juston    | marius.juston@hotmail.fr       |
 
