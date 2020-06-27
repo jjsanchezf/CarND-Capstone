@@ -28,7 +28,7 @@ class TLDetector(object):
         self.waypoints_2d = None
         self.waypoint_tree = None
         self.has_image = False
-        self.counter = self.images_skip = 2
+        self.counter = self.images_skip = 1
 
         rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
@@ -86,7 +86,6 @@ class TLDetector(object):
         """
         if self.counter < self.images_skip:
             self.counter += 1
-            rospy.loginfo('skipping image')
             self.upcoming_red_light_pub.publish(Int32(self.last_wp))
             
         else:
@@ -178,8 +177,7 @@ class TLDetector(object):
                 line = stop_line_positions[i]
                 temp_wp_idx = self.get_closest_waypoint(line[0], line[1])
                 dist = math.sqrt((self.pose.pose.position.x - line[0])**2 + (self.pose.pose.position.y - line[1])**2)
-                if dist < 75:
-                    rospy.loginfo('Light closer than 75m')
+                if dist < 100:
                     # Find the closest stop line waypoint index
                     d = temp_wp_idx - car_wp_idex
                     if 0 <= d < diff:
@@ -188,7 +186,6 @@ class TLDetector(object):
                         line_wp_idex = temp_wp_idx
 
         if closest_light:
-            rospy.loginfo('get_light_state')
             state = self.get_light_state(closest_light)
             return line_wp_idex, state
         return -1, TrafficLight.UNKNOWN
