@@ -76,18 +76,13 @@ class Controller(object):
 
         self.highest_v = max(self.highest_v, current_v.x)
 
-        throttle_cmd = 0.  # Throttle command value
         brake_cmd = 0.  # Throttle command value
-
-        d_t = 2.0  # desire braking time: reduce to the target speed within d_t
-        # over the limit, then we need to apply brake
 
         current_time = rospy.get_time()
         sample_time = current_time - self.last_time
         self.last_time = current_time
 
         throttle_cmd = self.throttle.step(v_error, sample_time)
-        brake = 0
 
         # Throttle and brake control
         if (current_v.x < 2.) and (target_v.x < 1.):

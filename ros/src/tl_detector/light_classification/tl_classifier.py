@@ -43,7 +43,6 @@ class TLClassifier(object):
         """
 
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        dim = image.shape[0:2]
 
         with self.graph.as_default():
             image_expanded = np.expand_dims(image, axis=0)

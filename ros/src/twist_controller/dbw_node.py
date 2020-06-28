@@ -89,12 +89,6 @@ class DBWNode(object):
     def loop(self):
         # publishing freq.
         rate = rospy.Rate(50)
-        # using estimate time loop for now (try message time stamp?)
-        dt = 1. / 50
-        # first connection
-        throttle = 0.0
-        brake = 0.0
-        steering = 0.0
 
         while not rospy.is_shutdown():
             # Get predicted throttle, brake, and steering using `twist_controller`
