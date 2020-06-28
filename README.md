@@ -9,7 +9,7 @@ This is the project repo for the final project of the Udacity Self-Driving Car N
 | [Jorge de Jesús Sánchez Fuentes](https://github.com/jjsanchezf)    | jorge.sanchezfuentes@gmail.com |
 | [Marius Juston](https://github.com/Marius-Juston)    | marius.juston@hotmail.fr       |
 
-A video of the project in action using the simulator can be viewed [here]https://youtu.be/qUKpypbqNpo).
+A video of the project in action using the simulator can be viewed [here](https://youtu.be/qUKpypbqNpo).
 
 [![Capstone project in Action on Simulator](imgs/video.png)](https://youtu.be/qUKpypbqNpo)
 
