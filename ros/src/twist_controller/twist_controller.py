@@ -61,7 +61,11 @@ class Controller(object):
         # TODO: Change the arg, kwarg list to suit your needs
         # Return throttle, brake, steer
         # Throttle := [0,1], Brake := N*m, Steering := Radian      
-        
+        if not dbw_status:
+            self.throttle.reset()
+            self.steer_pid.reset()
+            return 0., 0., 0. 
+
         # linear speed error in x
         v_current = self.vel_filter.filt(abs(current_v.x))
         v_target  = abs(target_v.x)
@@ -83,7 +87,7 @@ class Controller(object):
         brake = 0
 
         # Throttle and brake control
-        if(current_v.x < 2.) and (target_v.x == 0.):
+        if(current_v.x < 2.) and (target_v.x < 1.):
             throttle_cmd = 0.
             self.throttle.reset()
             brake_cmd = 400.  #Nm

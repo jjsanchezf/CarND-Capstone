@@ -4,10 +4,15 @@ This is the project repo for the final project of the Udacity Self-Driving Car N
 
 | Name             | Email                          | 
 |:-----------------|:------------------------------:|
-| Subir Das        | subir.das1@gmail.com           |
-| Job Vakayil Jose | jvjctk@gmail.com               |
-| Jorge Sanchez    | jorge.sanchezfuentes@gmail.com |
-| Marius Juston    | marius.juston@hotmail.fr       |
+| [Subir Das](https://github.com/iPhoring)        | subir.das1@gmail.com           |
+| [Job Vakayil Jose](https://github.com/jvjctk) | jvjctk@gmail.com               |
+| [Jorge de Jesús Sánchez Fuentes](https://github.com/jjsanchezf)    | jorge.sanchezfuentes@gmail.com |
+| [Marius Juston](https://github.com/Marius-Juston)    | marius.juston@hotmail.fr       |
+
+A video of the project in action using the simulator can be viewed [here]https://youtu.be/qUKpypbqNpo).
+
+[![Capstone project in Action on Simulator](imgs/video.png)](https://youtu.be/qUKpypbqNpo)
+
 
 ### Installation
 
@@ -97,3 +102,4 @@ Specific to these libraries, the simulator grader and Carla use the following:
 | OpenMP | N/A | N/A |
 
 We are working on a fix to line up the OpenCV versions between the two.
+
