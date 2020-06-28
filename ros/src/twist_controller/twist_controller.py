@@ -33,7 +33,6 @@ MAX_INTEGRAL = 10.
 
 
 class Controller(object):
-    # TODO: Implement
     def __init__(self, vehicle_mass, fuel_capacity, brake_deadband, decel_limit, accel_limit, wheel_radius, wheel_base,
                  steer_ratio, max_lat_accel, max_steer_angle):
         self.target_v = 0.0
@@ -63,7 +62,6 @@ class Controller(object):
         self.last_time = rospy.get_time()
 
     def control(self, target_v, target_w, current_v, current_w, dbw_status):
-        # TODO: Change the arg, kwarg list to suit your needs
         # Return throttle, brake, steer
         # Throttle := [0,1], Brake := N*m, Steering := Radian      
         if not dbw_status:
@@ -98,7 +96,7 @@ class Controller(object):
             brake_cmd = 400.  # Nm
 
             # allow a small margin of error before applying the brakes
-        elif (throttle_cmd < 0.):
+        elif throttle_cmd < 0.:
             gain = abs(throttle_cmd) * current_v.x / 10.
             Bf = self.vehicle_mass  # * 1. * 9.81
             brake_cmd = fabs(Bf * self.wheel_radius * gain)

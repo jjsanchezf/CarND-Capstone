@@ -64,15 +64,11 @@ class TLClassifier(object):
                     if class_label == 2:
                         rospy.loginfo("[TL_Classifier] {RED}")
                         return TrafficLight.RED
-                        return 1  # TrafficLight.RED # TrafficLight.RED has to be used
                     elif class_label == 3:
                         rospy.loginfo("[TL_Classifier] {YELLOW}")
                         return TrafficLight.YELLOW
-                        return 2  # TrafficLight.YELLOW # TrafficLight.YELLOW has to be used
                     elif class_label == 1:
                         rospy.loginfo("[TL_Classifier] {GREEN}")
                         return TrafficLight.GREEN
-                        return 3  # TrafficLight.GREEN # TrafficLight.GREEN has to be used
 
-        # TODO implement light color prediction
         return TrafficLight.UNKNOWN

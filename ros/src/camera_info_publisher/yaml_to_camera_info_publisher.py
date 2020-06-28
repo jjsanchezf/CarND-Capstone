@@ -29,7 +29,7 @@ def yaml_to_CameraInfo(calib_yaml):
 
     Parameters
     ----------
-    yaml_fname : str
+    calib_yaml : str
         Path to yaml file containing camera calibration data
 
     Returns

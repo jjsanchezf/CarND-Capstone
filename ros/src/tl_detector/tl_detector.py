@@ -29,6 +29,7 @@ class TLDetector(object):
         self.waypoint_tree = None
         self.has_image = False
         self.counter = self.images_skip = 1
+        self.prev_light_loc = None
 
         rospy.Subscriber('/current_pose', PoseStamped, self.pose_cb)
         rospy.Subscriber('/base_waypoints', Lane, self.waypoints_cb)
@@ -146,7 +147,7 @@ class TLDetector(object):
         """
         # For testing we are retuning the light state
         # return light.state
-        if (not self.has_image):
+        if not self.has_image:
             self.prev_light_loc = None
             return False
         #
