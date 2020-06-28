@@ -13,6 +13,7 @@ A video of the project in action using the simulator can be viewed [here]https:/
 
 [![Capstone project in Action on Simulator](imgs/video.png)](https://youtu.be/qUKpypbqNpo)
 
+
 ### Installation
 
 Please use **one** of the two installation options, either native **or** docker installation.
