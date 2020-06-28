@@ -49,7 +49,7 @@ class WaypointUpdater(object):
         self.waypoints_2d = None
         self.waypoint_tree = None
 
-        # rospy.spin() commenting as they are not uing it
+        # rospy.spin() commenting as they are not using it
         self.loop()
 
     def loop(self):
@@ -91,12 +91,12 @@ class WaypointUpdater(object):
 
         closest_idx = self.get_closest_waypoint_idx()
         farthest_idx = closest_idx + LOOKAHEAD_WPS
-        base_cropedpoints = self.base_waypoints.waypoints[closest_idx:farthest_idx]
+        base_cropped_points = self.base_waypoints.waypoints[closest_idx:farthest_idx]
 
         if self.stopline_wp_idx == -1 or (self.stopline_wp_idx >= farthest_idx):
-            lane.waypoints = base_cropedpoints
+            lane.waypoints = base_cropped_points
         else:
-            lane.waypoints = self.decelerate_waypoints(base_cropedpoints, closest_idx)
+            lane.waypoints = self.decelerate_waypoints(base_cropped_points, closest_idx)
         return lane
 
     def decelerate_waypoints(self, waypoints, closest_idx):
