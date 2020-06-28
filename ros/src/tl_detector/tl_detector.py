@@ -14,7 +14,7 @@ from scipy.spatial import KDTree
 import math
 
 
-STATE_COUNT_THRESHOLD = 2
+STATE_COUNT_THRESHOLD = 3
 
 
 class TLDetector(object):

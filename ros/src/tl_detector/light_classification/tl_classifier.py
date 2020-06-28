@@ -62,15 +62,15 @@ class TLClassifier(object):
             for box, score, class_label in zip(boxes, scores, classes):
                 if score > self.threshold:
                     class_label = int(class_label)
-                    if class_label == 1:
+                    if class_label == 2:
                         rospy.loginfo("[TL_Classifier] {RED}")
                         return TrafficLight.RED
                         return 1#TrafficLight.RED # TrafficLight.RED has to be used
-                    elif class_label == 2:
+                    elif class_label == 3:
                         rospy.loginfo("[TL_Classifier] {YELLOW}")
                         return TrafficLight.YELLOW
                         return 2#TrafficLight.YELLOW # TrafficLight.YELLOW has to be used
-                    elif class_label == 3:
+                    elif class_label == 1:
                         rospy.loginfo("[TL_Classifier] {GREEN}")
                         return TrafficLight.GREEN
                         return 3#TrafficLight.GREEN # TrafficLight.GREEN has to be used
