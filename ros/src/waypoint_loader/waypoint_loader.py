@@ -1,15 +1,13 @@
 #!/usr/bin/env python
 
-import os
 import csv
 import math
+import os
 
-from geometry_msgs.msg import Quaternion
-
-from styx_msgs.msg import Lane, Waypoint
-
-import tf
 import rospy
+import tf
+from geometry_msgs.msg import Quaternion
+from styx_msgs.msg import Lane, Waypoint
 
 CSV_HEADER = ['x', 'y', 'z', 'yaw']
 MAX_DECEL = 1.0
@@ -30,7 +28,7 @@ class WaypointLoader(object):
         if os.path.isfile(path):
             waypoints = self.load_waypoints(path)
             self.publish(waypoints)
-            rospy.loginfo('Waypoint Loded')
+            rospy.loginfo('Waypoint Loaded')
         else:
             rospy.logerr('%s is not a file', path)
 
@@ -58,7 +56,7 @@ class WaypointLoader(object):
 
     def distance(self, p1, p2):
         x, y, z = p1.x - p2.x, p1.y - p2.y, p1.z - p2.z
-        return math.sqrt(x*x + y*y + z*z)
+        return math.sqrt(x * x + y * y + z * z)
 
     def decelerate(self, waypoints):
         last = waypoints[-1]
